@@ -340,7 +340,7 @@ export function GlobalBackground() {
 
       {ready && (
         <Canvas
-          dpr={[1, 1.8]}
+          dpr={[1, typeof window !== "undefined" && window.innerWidth < 768 ? 1.2 : 1.7]}
           gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
           camera={{ position: [0, 0, 6.2], fov: 48 }}
           style={{ position: "absolute", inset: 0 }}

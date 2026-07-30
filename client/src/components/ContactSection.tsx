@@ -50,7 +50,7 @@ export function ContactSection() {
       }} />
 
       {/* ── Section number + divider ── */}
-      <div style={{ padding: "7rem 2.5rem 0" }}>
+      <div className="px-4 sm:px-10 pt-16 sm:pt-28">
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
@@ -81,32 +81,18 @@ export function ContactSection() {
       </div>
 
       {/* ── Giant headline ── */}
-      <div style={{ padding: "0 2.5rem" }}>
+      <div className="px-4 sm:px-10">
         <ClipReveal delay={0}>
           <div style={{
             fontFamily: "'Cabinet Grotesk', sans-serif",
             fontWeight: 900,
-            fontSize: "clamp(4rem, 16vw, 18rem)",
+            fontSize: "clamp(2.4rem, 12vw, 18rem)",
             lineHeight: 0.85,
             letterSpacing: "-.04em",
-            color: "#efefef",
-            userSelect: "none",
+            color: "#c8ff00",
+            textShadow: "0 0 100px rgba(200,255,0,.2)",
           }}>
-            LET'S
-          </div>
-        </ClipReveal>
-        <ClipReveal delay={0.1}>
-          <div style={{
-            fontFamily: "'Cabinet Grotesk', sans-serif",
-            fontWeight: 900,
-            fontSize: "clamp(4rem, 16vw, 18rem)",
-            lineHeight: 0.85,
-            letterSpacing: "-.04em",
-            WebkitTextStroke: "2px rgba(200,255,0,.5)",
-            color: "transparent",
-            userSelect: "none",
-          }}>
-            TALK.
+            GET IN TOUCH
           </div>
         </ClipReveal>
       </div>
@@ -117,8 +103,8 @@ export function ContactSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.3 }}
+        className="px-4 sm:px-10 pt-6"
         style={{
-          padding: "2rem 2.5rem 0",
           fontFamily: "'Cabinet Grotesk', sans-serif",
           fontSize: "clamp(.9rem, 1.5vw, 1.1rem)",
           color: "#444", lineHeight: 1.7,
@@ -131,8 +117,8 @@ export function ContactSection() {
       {/* ── Contact links row ── */}
       <div
         ref={linksRef}
+        className="px-4 sm:px-10 py-8"
         style={{
-          padding: "3rem 2.5rem",
           display: "flex", flexWrap: "wrap", gap: "1rem",
           borderTop: "1px solid rgba(200,255,0,.06)",
           marginTop: "3rem",

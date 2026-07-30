@@ -138,7 +138,7 @@ export function AboutSection() {
 
   return (
     <section id="about" ref={sectionRef} style={{ background: "rgba(3,3,3,.86)", overflow: "hidden" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "7rem 2.5rem 9rem" }}>
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-10 py-16 sm:py-28">
 
         {/* ── Section divider + number ── */}
         <motion.div
@@ -159,8 +159,8 @@ export function AboutSection() {
           title={
             <h2 style={{
               fontFamily: "'Cabinet Grotesk',sans-serif", fontWeight: 900,
-              fontSize: "clamp(2.8rem,7vw,6rem)", letterSpacing: "-.04em",
-              lineHeight: .88, color: "#efefef", margin: "0 0 1.5rem",
+              fontSize: "clamp(2.2rem,7vw,6rem)", letterSpacing: "-.04em",
+              lineHeight: .9, color: "#efefef", margin: "0 0 1.5rem",
             }}>
               Building{" "}
               <span style={{ color: "#c8ff00", textShadow: "0 0 60px rgba(200,255,0,.25)" }}>intelligent</span>
@@ -172,11 +172,7 @@ export function AboutSection() {
         {/* Bio + visual grid */}
         <div
           ref={bioRef}
-          style={{
-            display: "grid", gridTemplateColumns: "1fr 1.2fr",
-            gap: "5rem", alignItems: "start", marginTop: "5rem",
-          }}
-          className="[grid-template-columns:1fr] md:[grid-template-columns:1fr_1.2fr]"
+          className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-8 md:gap-20 items-start mt-10 md:mt-20"
         >
           {/* Photo with parallax */}
           <motion.div

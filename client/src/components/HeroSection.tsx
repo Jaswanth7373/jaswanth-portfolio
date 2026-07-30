@@ -374,14 +374,14 @@ export function HeroSection() {
           </div>
 
           {/* Right: animated stat counters */}
-          <div style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap" }}>
+          <div className="grid grid-cols-2 gap-4 w-full sm:w-auto sm:flex sm:gap-10 sm:justify-end">
             {STATS.map((s, i) => (
               <motion.div
                 key={s.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.5 + i * 0.08, duration: 0.5 }}
-                style={{ textAlign: "right" }}
+                className="bg-black/30 sm:bg-transparent border border-white/5 sm:border-none p-3 sm:p-0 rounded-lg text-left sm:text-right"
               >
                 <div style={{
                   fontFamily: "'Cabinet Grotesk', sans-serif",
@@ -394,7 +394,7 @@ export function HeroSection() {
                 </div>
                 <div style={{
                   fontFamily: "'Instrument Mono', monospace",
-                  fontSize: ".56rem", color: "#2a2a2a",
+                  fontSize: ".56rem", color: "#666",
                   letterSpacing: ".14em", textTransform: "uppercase",
                   marginTop: ".25rem",
                 }}>{s.label}</div>

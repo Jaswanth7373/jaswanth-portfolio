@@ -5,15 +5,26 @@ let lenisInstance: Lenis | null = null
 
 export function useSmoothScroll() {
   useEffect(() => {
-    // @ts-ignore – @studio-freight/lenis options
+    const isTouchDevice =
+      "ontouchstart" in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia("(pointer: coarse)").matches
+
+    // On touch devices, native touch momentum scrolling is used for 100% smooth, stutter-free performance
+    if (isTouchDevice) {
+      document.documentElement.style.scrollBehavior = "smooth"
+      return
+    }
+
+    // @ts-ignore – @studio-freight/lenis options for desktop
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.1,
       easing: (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1.1,
-      touchMultiplier: 1.8,
+      touchMultiplier: 1.0,
       infinite: false,
     })
 

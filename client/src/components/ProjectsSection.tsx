@@ -487,7 +487,7 @@ export function ProjectsSection() {
       </div>
 
       {/* Cards */}
-      <div style={{ padding: "5rem 2rem 8rem" }}>
+      <div className="px-4 sm:px-10 py-12 sm:py-24">
         <div style={{ maxWidth: "1140px", margin: "0 auto" }}>
 
           {/* Featured */}
