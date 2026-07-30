@@ -39,10 +39,10 @@ export function Navigation() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      className="px-4 md:px-10 py-4"
       style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 500,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "1.25rem 2.5rem",
         background: scrolled ? "rgba(3,3,3,.92)" : "transparent",
         borderBottom: scrolled ? "1px solid rgba(200,255,0,.05)" : "1px solid transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",

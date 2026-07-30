@@ -144,6 +144,7 @@ export function HeroSection() {
 
       {/* ── TOP-LEFT label ── */}
       <motion.div
+        className="hidden sm:block"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2.1, duration: 0.7 }}
@@ -159,6 +160,7 @@ export function HeroSection() {
 
       {/* ── TOP-RIGHT label ── */}
       <motion.div
+        className="hidden sm:block"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2.2, duration: 0.7 }}
@@ -174,8 +176,9 @@ export function HeroSection() {
         <span style={{ color: "rgba(200,255,0,.2)" }}>B.Tech CSE · 2023–Present</span>
       </motion.div>
 
-      {/* ── Right-edge vertical socials ── */}
+      {/* ── Right-edge vertical socials (Desktop) ── */}
       <motion.div
+        className="hidden md:flex"
         initial={{ opacity: 0, x: 16 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 2.3, duration: 0.7 }}
@@ -183,7 +186,7 @@ export function HeroSection() {
           position: "absolute", right: "2rem", top: "50%",
           transform: "translateY(-50%)",
           zIndex: 3,
-          display: "flex", flexDirection: "column", alignItems: "center", gap: "1.25rem",
+          flexDirection: "column", alignItems: "center", gap: "1.25rem",
         }}
       >
         {SOCIALS.map(({ icon: Icon, url, label }) => (
@@ -217,7 +220,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.7 }}
           style={{
-            padding: "0 2.5rem",
+            padding: "0 1.25rem",
             fontFamily: "'Instrument Mono', monospace",
             fontSize: ".72rem", letterSpacing: ".2em",
             textTransform: "uppercase",
@@ -230,7 +233,7 @@ export function HeroSection() {
         </motion.div>
 
         {/* Giant name — letter by letter */}
-        <div style={{ padding: "0 2rem", perspective: "800px" }}>
+        <div style={{ padding: "0 1.25rem", perspective: "800px" }}>
           {/* "M N" */}
           <div style={{ overflow: "hidden", lineHeight: 0.88 }}>
             <motion.div
@@ -240,7 +243,7 @@ export function HeroSection() {
               style={{
                 fontFamily: "'Cabinet Grotesk', sans-serif",
                 fontWeight: 900,
-                fontSize: "clamp(3.8rem, 14vw, 18rem)",
+                fontSize: "clamp(2.4rem, 12vw, 18rem)",
                 lineHeight: 0.88,
                 letterSpacing: "-.04em",
                 color: "#aaff00",
@@ -261,7 +264,7 @@ export function HeroSection() {
               style={{
                 fontFamily: "'Cabinet Grotesk', sans-serif",
                 fontWeight: 900,
-                fontSize: "clamp(3.8rem, 14vw, 18rem)",
+                fontSize: "clamp(2.4rem, 12vw, 18rem)",
                 lineHeight: 0.88,
                 letterSpacing: "-.04em",
                 color: "#c8ff00",

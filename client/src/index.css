@@ -141,11 +141,20 @@
 }
 
 /* ━━━━━━━━ CURSOR ━━━━━━━━ */
-/* Force cursor: none on every element — overrides component libraries */
-*, *::before, *::after,
-a, button, input, textarea, select, label, [role="button"],
-svg, svg *, path, circle, rect, line, polyline {
-  cursor: none !important;
+/* Force cursor: none on desktop devices with mice/trackpads, preserve standard cursor on mobile touch */
+@media (pointer: fine) {
+  *, *::before, *::after,
+  a, button, input, textarea, select, label, [role="button"],
+  svg, svg *, path, circle, rect, line, polyline {
+    cursor: none !important;
+  }
+}
+
+@media (pointer: coarse) {
+  *, *::before, *::after,
+  a, button, input, textarea, select, label, [role="button"] {
+    cursor: auto !important;
+  }
 }
 
 /* ━━━━━━━━ TYPING BLINK BAR ━━━━━━━━ */
