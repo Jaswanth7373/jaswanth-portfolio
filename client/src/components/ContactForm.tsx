@@ -15,12 +15,32 @@ export function ContactForm() {
     e.preventDefault()
     if (!form.name || !form.email || !form.message) return
     setSubmitting(true)
+
     try {
       await apiRequest("POST", "/api/contact", form)
       toast({ title: "Message sent!", description: "Thanks — I'll get back to you soon." })
       setForm({ name: "", email: "", subject: "", message: "" })
     } catch (err: any) {
-      toast({ title: "Couldn't send", description: err?.message || "Try emailing jaswanthsimha533@gmail.com directly.", variant: "destructive" })
+      const errMsg = String(err?.message || "")
+      const is405 = errMsg.includes("405") || errMsg.includes("Not Allowed")
+
+      if (is405) {
+        // GitHub Pages or static host fallback: Launch email client pre-filled with message
+        const subject = encodeURIComponent(form.subject ? `Portfolio: ${form.subject}` : `Message from ${form.name} via Portfolio`)
+        const body = encodeURIComponent(`Hi Jaswanth,\n\n${form.message}\n\nFrom: ${form.name}\nEmail: ${form.email}`)
+        window.open(`mailto:jaswanthsimha533@gmail.com?subject=${subject}&body=${body}`, "_blank")
+        toast({
+          title: "Opening Email Client",
+          description: "Opening your email app to send to jaswanthsimha533@gmail.com. Thank you!",
+        })
+        setForm({ name: "", email: "", subject: "", message: "" })
+      } else {
+        toast({
+          title: "Couldn't send message",
+          description: "Please email jaswanthsimha533@gmail.com directly.",
+          variant: "destructive"
+        })
+      }
     } finally {
       setSubmitting(false)
     }
