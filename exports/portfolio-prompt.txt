@@ -1,0 +1,598 @@
+==============================================================
+  FULL PORTFOLIO WEBSITE PROMPT — M N JASWANTH
+  (Use this prompt to rebuild the entire site from scratch)
+==============================================================
+
+Build a futuristic, dark-mode personal portfolio website for M N Jaswanth —
+a B.Tech Computer Science student at M S Ramaiah University of Applied Sciences,
+Bengaluru, India. The design should feel sleek, modern, and tech-forward, with
+animated particles, glowing gradients, and smooth scrolling between sections.
+
+──────────────────────────────────────────────────────────────
+TECH STACK
+──────────────────────────────────────────────────────────────
+Frontend : React + TypeScript + Vite
+Styling  : Tailwind CSS + shadcn/ui component library
+Backend  : Express.js (Node)
+Email    : SendGrid API (for contact form)
+Routing  : Wouter (client-side)
+Data     : In-memory storage (MemStorage) — no database needed
+Icons    : lucide-react
+
+──────────────────────────────────────────────────────────────
+PERSONAL INFORMATION
+──────────────────────────────────────────────────────────────
+Name      : M N Jaswanth
+Email     : jaswanthsimha533@gmail.com
+Location  : Bengaluru, India
+GitHub    : https://github.com/Jaswanth7373
+LinkedIn  : https://www.linkedin.com/in/m-n-jaswanth
+Instagram : https://www.instagram.com/jaswanthsimha/
+
+──────────────────────────────────────────────────────────────
+GLOBAL DESIGN RULES
+──────────────────────────────────────────────────────────────
+- Dark mode only (no light/dark toggle required)
+- Primary color: electric cyan/blue gradient
+- Accent color: purple-ish / neon
+- Section headings use a gradient text effect:
+    bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent
+- Cards use: backdrop-blur-sm bg-card/80 with hover-elevate class
+- Fonts: a "display" font for headings, "body" font for paragraphs
+- All section IDs match the nav links:
+    #hero, #about, #projects, #blog, #resume, #contact
+- Smooth scroll to section on nav click
+- Animated particle canvas in the hero background
+- No emojis anywhere — use lucide-react icons instead
+
+──────────────────────────────────────────────────────────────
+SECTION 1 — NAVIGATION (sticky, top)
+──────────────────────────────────────────────────────────────
+Sticky top navigation bar with:
+- Left: Name "M N Jaswanth" as a brand logo (gradient text)
+- Center: Nav links — About, Projects, Blog, Resume, Contact
+  (each scrolls smoothly to its section on click)
+- Right: Dark mode toggle button (ThemeToggle component)
+- Mobile: hamburger menu that collapses the nav links
+- Background: backdrop-blur with subtle border at bottom
+- Active section highlighted in the nav
+
+──────────────────────────────────────────────────────────────
+SECTION 2 — HERO (full screen, id="hero")
+──────────────────────────────────────────────────────────────
+Full-screen hero with animated particle canvas background
+(canvas-based floating dots that connect with lines).
+
+Content (centered):
+1. Name: "M N Jaswanth" — very large (text-7xl–8xl), bold,
+   gradient from primary → accent → primary with animate-pulse
+2. Typing animation tagline (one character at a time, 80ms speed):
+   "Data Science | Python | AI & ML Developer"
+3. Short description paragraph:
+   "B.Tech CSE student and Full-Stack Developer focused on AI,
+    Machine Learning, and Data Science, eager to build impactful
+    real-world solutions."
+4. Two CTA buttons side by side:
+   a. "View Resume" (primary gradient, Download icon) → scrolls to #resume
+   b. "Explore Projects" (outline, ExternalLink icon) → scrolls to #projects
+5. Animated bouncing down-arrow button at the bottom → scrolls to #about
+
+Gradient overlay (semi-transparent) sits between the particles
+and the text so text is always readable.
+
+──────────────────────────────────────────────────────────────
+SECTION 3 — ABOUT (id="about")
+──────────────────────────────────────────────────────────────
+Section heading: "About Me"
+Subheading: "A B.Tech Computer Science student passionate about AI,
+Machine Learning, and Full-Stack Development..."
+
+Row 1 — two cards side by side (grid lg:grid-cols-2):
+
+  CARD A — "Who I Am":
+    - Avatar (profile photo: ogImage.jpg) — 80×80px with primary border
+    - Name: M N Jaswanth
+    - Location: Bengaluru, India (MapPin icon)
+    - Email: jaswanthsimha533@gmail.com (Mail icon)
+    - 3 paragraphs:
+      1. "I am a B.Tech Computer Science student and Full-Stack Developer
+         with a strong interest in Artificial Intelligence, Machine Learning,
+         and Data Science. I enjoy building intelligent systems and scalable
+         web applications that solve real-world problems."
+      2. "I have hands-on experience in Python, TensorFlow, and modern web
+         technologies, and have worked on projects such as deep learning
+         models, drug discovery systems, and full-stack applications."
+      3. "I am passionate about continuous learning, exploring new
+         technologies, and applying my skills to practical and impactful
+         projects. Open to internship opportunities and collaborations in
+         AI/ML, Data Science, and Full-Stack Development."
+
+  CARD B — "Technical Skills":
+    Display each skill as a styled badge with a percentage level shown
+    on hover as a tooltip or progress indicator.
+    Skills list (name → proficiency %):
+      Python        92%    Java           82%    JavaScript     85%
+      HTML          95%    CSS            92%    NumPy          88%
+      Pandas        88%    Matplotlib     85%    TensorFlow     82%
+      Keras         80%    Git            88%    GitHub         90%
+      DSA           85%    OOP            88%    DBMS           82%
+      Comp Networks 78%    Op Systems     80%    MongoDB        80%
+      React         85%    Express        82%    Node.js        82%
+
+Row 2 — TIMELINE CARD (full width): "Education & Experience"
+  Three timeline entries (vertical timeline with icons):
+
+  1. TYPE: education
+     Title: Bachelor of Technology — Computer Science
+     Org  : M S Ramaiah University of Applied Sciences
+     Loc  : Bengaluru, India
+     Dates: Aug 2023 – Present
+     Note : Current Percentage: 88.1%
+     Tags : AI, Machine Learning, Data Science, DSA, DBMS, OOP
+
+  2. TYPE: education
+     Title: Class XII (Senior Secondary)
+     Org  : Bhashyam Junior College, Guntur
+     Loc  : Guntur, India
+     Dates: Jun 2021 – May 2023
+     Note : Overall percentage: 86.2%
+     Tags : Mathematics, Physics, Chemistry, Computer Science
+
+  3. TYPE: experience
+     Title: Data Science Intern
+     Org  : CODTECH IT Solutions
+     Loc  : Remote
+     Dates: 2024 – 2024
+     Note : Completed multiple data science task deliverables involving
+            data analysis, visualization, and basic ML workflows.
+     Tags : Python, Data Analysis, Pandas, Visualization
+
+Row 3 — CERTIFICATIONS CARD (full width):
+  Subtitle: "Click any certificate name to view the original document"
+  Grid of 8 clickable certificate cards (2-column grid).
+  Each card shows: cert name, issuer (in primary color), date,
+  and an ExternalLink icon. Opens the file in a new browser tab.
+
+  Certifications:
+  1. Deloitte — Data Analytics Job Simulation
+     Issuer: Deloitte (via Forage) | Date: February 2026
+     File: deloitte_data_analytics.pdf
+
+  2. Data Structures & Algorithms
+     Issuer: Internshala Trainings | Date: July 2024
+     File: internshala certificate image
+
+  3. Microsoft Azure AI — 4-week Internship
+     Issuer: Microsoft / Edunet Foundation / AICTE | Date: May–June 2025
+     File: microsoft_certificate.pdf
+
+  4. Edunet Foundation — AI Azure Internship
+     Issuer: Edunet Foundation | Date: June 2025
+     File: edunet_certificate.pdf
+
+  5. Broadridge AI Workshop
+     Issuer: Ramaiah University × Broadridge | Date: May 2025
+     File: broadridge certificate image
+
+  6. Broadridge — Certificate (PDF)
+     Issuer: Broadridge Financial Solutions | Date: May 2025
+     File: Cerificate_Broadridge.pdf
+
+  7. be10x — AI Tools & ChatGPT Workshop
+     Issuer: be10x | Date: March 2026
+     File: be10x certificate image
+
+  8. Upstop — Agentic Hackathon (Team Rockstar)
+     Issuer: Upstop | Date: 2026
+     File: upstop_agentic_hackathon.pdf
+
+──────────────────────────────────────────────────────────────
+SECTION 4 — PROJECTS (id="projects")
+──────────────────────────────────────────────────────────────
+Section heading: "Featured Projects"
+Subheading: "Showcasing real-world applications in AI, Machine
+Learning, and Full-Stack Development"
+
+STATS ROW (4 cards in a row):
+  - Code2 icon    | "20+"  | "Projects Built"
+  - Brain icon    | "10+"  | "AI/ML Models"
+  - Database icon | "15+"  | "Technologies"
+  - BookOpen icon | "Active"| "Open Source"
+
+FEATURED WORK (2 columns, md:grid-cols-2):
+  Each card shows: image, title, description, tech badges,
+  GitHub link button. Clicking a card opens a full detail modal.
+
+  1. Drug Discovery using Graph Neural Networks
+     featured: true
+     Short: "Built a Graph Neural Network (GCN) model to predict
+     drug–target interactions using molecular SMILES data, achieving
+     strong performance on AUC-ROC and accuracy metrics."
+     Long: "A research-grade deep learning project applying Graph
+     Convolutional Networks to drug discovery. Molecules are represented
+     as graphs from SMILES strings using RDKit, then fed into a PyTorch
+     Geometric GCN to predict drug–target interactions. Evaluated using
+     AUC-ROC, precision, recall, and accuracy on benchmark datasets."
+     Tech: PyTorch Geometric, RDKit, Python, Deep Learning, GNN
+     GitHub: https://github.com/Jaswanth7373
+     Features:
+       - Molecular graph construction from SMILES strings using RDKit
+       - Graph Convolutional Network (GCN) implementation in PyTorch Geometric
+       - Drug–target interaction prediction with strong AUC-ROC scores
+       - Comprehensive evaluation pipeline with multiple metrics
+       - Reproducible training and inference workflows
+       - Modular code structure for easy experimentation
+     Challenges:
+       - Converting molecular SMILES to graph representations correctly
+       - Designing GCN architecture for sparse molecular graphs
+       - Handling class imbalance in interaction datasets
+       - Tuning hyperparameters for optimal AUC-ROC performance
+
+  2. Deep Learning for Image Recognition (CNN)
+     featured: true
+     Short: "Developed a Convolutional Neural Network for image
+     classification, improving accuracy through optimization and
+     evaluation on benchmark datasets."
+     Long: "A deep learning project focused on building a CNN from
+     the ground up for image classification. Covers data preprocessing,
+     augmentation, model training with TensorFlow/Keras, and rigorous
+     evaluation, with iterative improvements to push accuracy higher."
+     Tech: Python, TensorFlow, Keras, CNN, NumPy
+     GitHub: https://github.com/Jaswanth7373
+     Features:
+       - End-to-end CNN architecture built with TensorFlow & Keras
+       - Data preprocessing and augmentation pipelines
+       - Training, validation, and testing with benchmark datasets
+       - Hyperparameter tuning for optimized accuracy
+       - Confusion matrix and per-class accuracy reporting
+       - Clean, well-documented Jupyter notebooks
+     Challenges:
+       - Designing a CNN that generalizes well without overfitting
+       - Choosing the right augmentation strategy for the dataset
+       - Tuning learning rate, batch size, and optimizer settings
+       - Interpreting model errors and iterating on the architecture
+
+OTHER PROJECTS (2–3 column grid):
+
+  3. Waste Food Management System
+     Short: "Web platform connecting food donors with NGOs and shelters,
+     featuring location-based matching, real-time tracking, and notifications."
+     Long: "A full-stack web app helping reduce food waste by connecting
+     restaurants, individuals, and event organizers with nearby NGOs and
+     shelters. Includes location-based matching, donation tracking, and
+     automated notifications."
+     Tech: HTML, CSS, JavaScript, Backend Integration
+     GitHub: https://github.com/Jaswanth7373
+     Features:
+       - Donor and recipient registration with role-based dashboards
+       - Location-based matching between donors and NGOs/shelters
+       - Real-time donation tracking and status updates
+       - Automated email/SMS notifications for new pickups
+       - Responsive interface accessible on mobile and desktop
+       - Simple admin view for monitoring donations
+     Challenges:
+       - Designing efficient location-based matching logic
+       - Coordinating real-time updates across donors and recipients
+       - Building reliable notification flows
+       - Keeping the UI simple for non-technical users
+
+  4. Library Management System (ML)
+     Short: "System using unsupervised learning algorithms (K-Means,
+     DBSCAN, Hierarchical) to cluster and analyze library data."
+     Long: "A machine-learning-driven library system applying unsupervised
+     learning to library data. K-Means, DBSCAN, and Hierarchical clustering
+     reveal reading patterns, popular categories, and member segments."
+     Tech: Python, Machine Learning, Data Analysis, Scikit-learn
+     GitHub: https://github.com/Jaswanth7373
+     Features:
+       - K-Means clustering for member segmentation
+       - DBSCAN for density-based pattern detection
+       - Hierarchical clustering with dendrogram visualization
+       - Data preprocessing and feature engineering pipelines
+       - Interactive analytics on borrowing patterns
+       - Clean, modular Python codebase
+     Challenges:
+       - Choosing the right clustering algorithm per use case
+       - Determining optimal cluster counts (elbow/silhouette methods)
+       - Cleaning and preparing real-world library data
+       - Communicating cluster insights meaningfully
+
+  5. CODTECH Internship — Task 1
+     Short: "First internship deliverable at CODTECH IT Solutions covering
+     core data science fundamentals, analysis, and visualization."
+     Tech: Python, Pandas, Visualization, Data Analysis
+     GitHub: https://github.com/Jaswanth7373/CODTECH-TASK-1
+     Features:
+       - Exploratory data analysis with Pandas
+       - Statistical visualizations using Matplotlib
+       - Data cleaning and preprocessing
+       - Documented findings and insights
+       - Reproducible analysis workflow
+
+  6. CODTECH Internship — Task 2
+     Short: "Second internship task expanding on data science with more
+     advanced techniques and applied modelling."
+     Tech: Python, Machine Learning, Scikit-learn, Pandas
+     GitHub: https://github.com/Jaswanth7373/codtech--task-2
+     Features:
+       - Advanced data preprocessing pipelines
+       - Machine learning model training
+       - Performance evaluation and tuning
+       - Comprehensive documentation
+       - Real-world applied focus
+
+PROJECT MODAL (dialog popup on card click):
+  Shows: large image, title, long description, all features as a
+  bulleted list, challenges list, full tech badge list, and a
+  "View on GitHub" button that opens in a new tab.
+
+──────────────────────────────────────────────────────────────
+SECTION 5 — BLOG (id="blog")
+──────────────────────────────────────────────────────────────
+Section heading: "Blog & Articles"
+Subheading: "Insights on AI, programming, and technology trends
+from the frontlines of innovation"
+
+SEARCH BAR: centered, with a Search icon inside the input.
+TAG FILTER: clickable Badge buttons for each unique tag.
+  Active tags are highlighted (variant="default").
+  "Clear all" button appears when tags are selected.
+
+FEATURED ARTICLES (2-column grid):
+
+  1. Building a CNN for Image Classification
+     Date     : 15/03/2026
+     Read time: 8 min
+     Tags     : Deep Learning, CNN, TensorFlow, Python
+     Excerpt  : "A practical guide on how I built a Convolutional Neural
+     Network (CNN) for image classification, including data preprocessing,
+     model training, and performance evaluation."
+     Full content: "In this article I walk through how I built a CNN for
+     image classification end-to-end. We'll cover dataset preparation,
+     augmentation strategies, designing the CNN architecture in
+     TensorFlow/Keras, training tips, and how I evaluated and iterated
+     on the model to push accuracy higher."
+     featured: true
+
+  2. Drug Discovery using Graph Neural Networks
+     Date     : 10/03/2026
+     Read time: 10 min
+     Tags     : AI, GNN, PyTorch, Data Science
+     Excerpt  : "Exploring how Graph Neural Networks can be used for
+     drug–target prediction using molecular data (SMILES), along with
+     tools like PyTorch Geometric and RDKit."
+     Full content: "Drug discovery is a long, expensive process — and
+     machine learning is changing that. I share how I used Graph
+     Convolutional Networks to predict drug–target interactions from
+     molecular SMILES strings, including how molecules become graphs
+     with RDKit and how PyTorch Geometric makes GNNs approachable."
+     featured: true
+
+Clicking a blog card opens a modal dialog showing:
+  - Title, publish date, read time
+  - Tag badges
+  - Full article content paragraph
+
+NEWSLETTER SUBSCRIPTION BOX (below articles):
+  - Gradient background (primary/accent 10%)
+  - Rss icon, heading "Stay Updated"
+  - Description: "Get the latest articles and insights delivered
+    directly to your inbox. No spam, just quality content."
+  - Email input + Subscribe button side by side
+
+──────────────────────────────────────────────────────────────
+SECTION 6 — RESUME (id="resume")
+──────────────────────────────────────────────────────────────
+Section heading: "Resume"
+Subheading: "A comprehensive overview of my technical skills,
+experience, and achievements"
+
+DOWNLOAD CARD (centered, max-w-md):
+  - Large gradient circle with Download icon
+  - "Download Full Resume" heading
+  - Description about the PDF
+  - Full-width gradient "Download Resume (PDF)" button
+    (links to the actual resume PDF file when one is available)
+
+QUICK HIGHLIGHTS (4-column grid):
+  Each card has an icon + title + bullet list:
+
+  1. Education (GraduationCap icon)
+     - B.Tech Computer Science — M S Ramaiah University (2023–Present)
+     - Class XII — Bhashyam Junior College, Guntur (2021–2023)
+
+  2. Experience (Briefcase icon)
+     - Data Science Intern — CODTECH IT Solutions (2024)
+
+  3. Achievements (Award icon)
+     - CODTECH Internship Completion
+     - Microsoft Azure AI Internship
+     - Broadridge AI Workshop — Ramaiah University
+
+  4. Key Skills (Star icon)
+     - Machine Learning & Deep Learning
+     - Full-Stack Web Development
+     - Data Science & Analytics
+     - Python & AI Frameworks
+
+TECHNICAL EXPERTISE CARD (3-column grid):
+  Programming Languages : Python, Java, JavaScript, HTML, CSS, SQL
+  Frameworks & Tools    : TensorFlow, Keras, PyTorch, React, Node.js,
+                          NumPy, Pandas, Scikit-learn, Matplotlib
+  Cloud & Databases     : MongoDB, Git, GitHub, Express.js
+
+CONTACT CTA at the bottom:
+  "Ready to Work Together? Let's discuss how my skills and experience
+   can contribute to your next project."
+  "Get In Touch" button → scrolls to #contact
+
+──────────────────────────────────────────────────────────────
+SECTION 7 — CONTACT (id="contact")
+──────────────────────────────────────────────────────────────
+Section heading: "Get In Touch"
+Subheading: "Ready to collaborate on your next project? Let's
+connect and discuss how we can work together."
+
+Two-column layout (lg:grid-cols-2):
+
+LEFT COLUMN:
+
+  CARD 1 — "Let's Connect":
+    Opening text: "I'm always interested in discussing new opportunities,
+    innovative projects, and collaborations. Whether you have a specific
+    project in mind or just want to chat about technology, feel free to
+    reach out."
+    - Mail icon row: jaswanthsimha533@gmail.com (mailto link)
+    - MapPin icon row: Bengaluru, India
+
+  CARD 2 — "Find Me Online" (2×2 button grid):
+    Each button has a colored gradient icon + label + ExternalLink:
+    - GitHub    → https://github.com/Jaswanth7373       (gray gradient)
+    - LinkedIn  → https://linkedin.com/in/m-n-jaswanth  (blue gradient)
+    - Instagram → https://instagram.com/jaswanthsimha/  (pink→purple)
+    - Email     → mailto:jaswanthsimha533@gmail.com     (green gradient)
+
+  CARD 3 — Availability status:
+    Green pulsing dot + "Available for new opportunities"
+    Sub text: "Currently accepting freelance projects and full-time positions"
+    Background: green tint (from-green-500/10 to-emerald-500/10)
+
+RIGHT COLUMN — CONTACT FORM:
+  A fully functional contact form wired to the Express backend.
+  Fields (all required):
+    - Name (text input)
+    - Email (email input, validated)
+    - Subject (text input)
+    - Message (textarea, min 10 chars)
+  Submit button: "Send Message" with Send icon
+  On success: show a green success toast notification
+  On error: show a red error toast notification
+  While submitting: show loading spinner on button
+
+  Backend route: POST /api/contact
+  Validates with Zod, stores message in MemStorage,
+  and sends an email via SendGrid to jaswanthsimha533@gmail.com
+  with Reply-To set to the sender's email address.
+  Requires env variable: SENDGRID_API_KEY
+
+──────────────────────────────────────────────────────────────
+SECTION 8 — FOOTER
+──────────────────────────────────────────────────────────────
+Simple dark footer with:
+- Name/brand: "M N Jaswanth"
+- Tagline: "B.Tech CSE | AI & ML Developer | Full-Stack Developer"
+- Nav links: About, Projects, Blog, Resume, Contact
+- Social icon buttons: GitHub, LinkedIn, Instagram, Email
+- Copyright: "© 2026 M N Jaswanth. Built with React & TypeScript."
+- "Designed and developed with passion" note
+
+──────────────────────────────────────────────────────────────
+BACKEND (Express) — server/routes.ts
+──────────────────────────────────────────────────────────────
+POST /api/contact
+  Body (validated with Zod):
+    { name: string, email: string (email), subject: string,
+      message: string (min 10 chars) }
+  Actions:
+    1. Validate body
+    2. Store message in MemStorage
+    3. Send email via SendGrid:
+       - From: jaswanthsimha533@gmail.com
+       - To:   jaswanthsimha533@gmail.com
+       - Reply-To: visitor's email
+       - Subject: "[Portfolio Contact] {subject}"
+       - Body: name, email, subject, message
+    4. Return 200 { success: true, message: "..." }
+  Requires env: SENDGRID_API_KEY
+
+──────────────────────────────────────────────────────────────
+DATA MODEL — shared/schema.ts
+──────────────────────────────────────────────────────────────
+contactMessages table:
+  id        : serial primary key
+  name      : text not null
+  email     : text not null
+  subject   : text not null
+  message   : text not null
+
+insertContactMessageSchema = createInsertSchema(contactMessages).omit({id})
+type InsertContactMessage = z.infer<typeof insertContactMessageSchema>
+type ContactMessage = typeof contactMessages.$inferSelect
+
+──────────────────────────────────────────────────────────────
+SPECIAL COMPONENTS
+──────────────────────────────────────────────────────────────
+
+ParticleBackground:
+  <canvas> element filling the entire hero section.
+  Renders 80 floating particles (dots) that move slowly and
+  draw connecting lines between nearby particles.
+  Uses requestAnimationFrame for smooth animation.
+  Responds to window resize.
+
+TypingAnimation:
+  Displays text one character at a time (typewriter effect).
+  Props: text (string), speed (ms per char, default 100ms).
+  Loops: after finishing, waits 2s then clears and retypes.
+
+SkillBadge:
+  Shows skill name as a badge.
+  On hover: shows a small progress bar indicating the level %.
+  Props: name, level (0–100), delay (for staggered animation).
+
+Timeline:
+  Vertical timeline component.
+  Each item: colored dot (blue for education, green for experience),
+  connecting vertical line, title, org, location, dates,
+  description paragraph, skill tags as badges.
+
+ProjectCard:
+  Card with: image (aspect-video), gradient overlay on image,
+  title, description, tech badges, GitHub icon button.
+  Entire card is clickable → opens ProjectModal.
+
+ProjectModal:
+  Full-screen dialog showing all project details:
+  image, title, long description, features (bulleted list),
+  challenges (bulleted list), tech stack badges,
+  "View on GitHub" button.
+
+BlogCard:
+  Card with: tags, title, excerpt, date, read-time.
+  Clickable → opens inline blog post modal.
+
+ContactForm:
+  React Hook Form + Zod validation.
+  Submits to POST /api/contact via TanStack Query mutation.
+  Shows loading state, success toast, error toast.
+
+ThemeProvider + ThemeToggle:
+  localStorage-synced dark/light mode toggle.
+  Toggles "dark" class on document.documentElement.
+
+──────────────────────────────────────────────────────────────
+ASSETS NEEDED (place in attached_assets/ or public/)
+──────────────────────────────────────────────────────────────
+- ogImage.jpg                          ← profile photo
+- deloitte_data_analytics.pdf          ← Deloitte cert
+- internshala certificate image (png)  ← Internshala cert
+- microsoft_certificate.pdf            ← Microsoft cert
+- edunet_certificate.pdf               ← Edunet cert
+- broadridge certificate image (png)   ← Broadridge workshop
+- Cerificate_Broadridge.pdf            ← Broadridge PDF cert
+- be10x certificate image (png)        ← be10x workshop
+- upstop_agentic_hackathon.pdf         ← Upstop hackathon
+- AI-generated project images (4 PNGs) ← used in ProjectCards
+
+──────────────────────────────────────────────────────────────
+ENVIRONMENT VARIABLES
+──────────────────────────────────────────────────────────────
+SENDGRID_API_KEY=<your SendGrid API key>
+
+Note: The sender email (jaswanthsimha533@gmail.com) must be
+verified in your SendGrid account under "Sender Authentication"
+before emails will be delivered.
+
+==============================================================
+END OF PROMPT
+==============================================================
