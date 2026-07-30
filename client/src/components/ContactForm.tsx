@@ -16,31 +16,61 @@ export function ContactForm() {
     if (!form.name || !form.email || !form.message) return
     setSubmitting(true)
 
+    // 1. Try local Express server or configured backend endpoint
     try {
-      await apiRequest("POST", "/api/contact", form)
-      toast({ title: "Message sent!", description: "Thanks — I'll get back to you soon." })
-      setForm({ name: "", email: "", subject: "", message: "" })
-    } catch (err: any) {
-      const errMsg = String(err?.message || "")
-      const is405 = errMsg.includes("405") || errMsg.includes("Not Allowed")
+      const endpoint = import.meta.env.VITE_API_URL
+        ? `${import.meta.env.VITE_API_URL.replace(/\/$/, "")}/api/contact`
+        : "/api/contact"
 
-      if (is405) {
-        // GitHub Pages or static host fallback: Launch email client pre-filled with message
-        const subject = encodeURIComponent(form.subject ? `Portfolio: ${form.subject}` : `Message from ${form.name} via Portfolio`)
-        const body = encodeURIComponent(`Hi Jaswanth,\n\n${form.message}\n\nFrom: ${form.name}\nEmail: ${form.email}`)
-        window.open(`mailto:jaswanthsimha533@gmail.com?subject=${subject}&body=${body}`, "_blank")
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      })
+
+      if (res.ok) {
+        toast({ title: "Message sent!", description: "Thanks — I'll get back to you soon." })
+        setForm({ name: "", email: "", subject: "", message: "" })
+        setSubmitting(false)
+        return
+      }
+    } catch {
+      // Continue to background static host delivery below
+    }
+
+    // 2. Direct background submission for GitHub Pages static host (No app popups!)
+    try {
+      const bgRes = await fetch("https://formsubmit.co/ajax/jaswanthsimha533@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject || `Message from ${form.name} via Portfolio`,
+          message: form.message,
+          _subject: `New Portfolio Message from ${form.name}`,
+          _template: "table",
+        }),
+      })
+
+      if (bgRes.ok) {
         toast({
-          title: "Opening Email Client",
-          description: "Opening your email app to send to jaswanthsimha533@gmail.com. Thank you!",
+          title: "Message sent successfully!",
+          description: "Thank you — your message has been delivered to jaswanthsimha533@gmail.com.",
         })
         setForm({ name: "", email: "", subject: "", message: "" })
       } else {
-        toast({
-          title: "Couldn't send message",
-          description: "Please email jaswanthsimha533@gmail.com directly.",
-          variant: "destructive"
-        })
+        throw new Error("Background submission error")
       }
+    } catch {
+      toast({
+        title: "Couldn't send message",
+        description: "Please email jaswanthsimha533@gmail.com directly.",
+        variant: "destructive",
+      })
     } finally {
       setSubmitting(false)
     }
