@@ -67,8 +67,7 @@ export function Navigation() {
       </motion.button>
 
       {/* Desktop links */}
-      <ul style={{ display: "flex", gap: "2.5rem", listStyle: "none", margin: 0, padding: 0 }}
-          className="hidden md:flex">
+      <ul className="hidden md:flex items-center gap-10 list-none m-0 p-0">
         {NAV.map(({ label, href }, i) => (
           <motion.li
             key={href}

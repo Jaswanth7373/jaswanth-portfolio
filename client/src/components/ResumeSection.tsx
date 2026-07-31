@@ -113,8 +113,7 @@ export function ResumeSection() {
             <span style={{ display: "block", width: "24px", height: "1px", background: "var(--lime)" }} />
             Skills &amp; Technologies
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "2rem" }}
-            className="[grid-template-columns:1fr_1fr] lg:[grid-template-columns:repeat(4,1fr)]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {SKILLS_BY_CAT.map(cat => (
               <div key={cat.cat}>
                 <div style={{ fontSize: ".82rem", fontWeight: 700, color: "var(--text)", marginBottom: "1rem", letterSpacing: "-.01em" }}>{cat.cat}</div>

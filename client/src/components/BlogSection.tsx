@@ -200,11 +200,8 @@ export function BlogSection() {
         {filtered.length > 0 ? (
           <div
             data-reveal
-            style={{
-              display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: "1.25rem",
-              transitionDelay: ".15s",
-            }}
-            className="[grid-template-columns:1fr] md:[grid-template-columns:repeat(2,1fr)]"
+            style={{ transitionDelay: ".15s" }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-5"
           >
             {filtered.map(p => (
               <BlogCard key={p.id} post={p} onClick={() => setModal(p)} />

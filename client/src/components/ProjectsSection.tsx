@@ -496,9 +496,7 @@ export function ProjectsSection() {
           </div>
 
           {/* Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1rem" }}
-            className="[grid-template-columns:1fr] sm:[grid-template-columns:1fr_1fr] lg:[grid-template-columns:repeat(4,1fr)]"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {grid.map((p, i) => (
               <GridCard key={p.id} project={p} index={i} onClick={() => setModal(p)} />
             ))}
