@@ -214,9 +214,8 @@ function FeaturedCard({ project, index, onClick }: { project: typeof PROJECTS[0]
         onClick={onClick}
         data-testid={`project-card-${project.id}`}
         data-cursor="view"
+        className="grid grid-cols-1 md:grid-cols-[1.1fr_1fr]"
         style={{
-          display: "grid",
-          gridTemplateColumns: "1.1fr 1fr",
           border: "1px solid rgba(200,255,0,.08)",
           borderRadius: "16px", overflow: "hidden",
           cursor: "none",
@@ -224,7 +223,6 @@ function FeaturedCard({ project, index, onClick }: { project: typeof PROJECTS[0]
           transition: "border-color .4s, box-shadow .4s",
           transformStyle: "preserve-3d",
         }}
-        className="[grid-template-columns:1fr] md:[grid-template-columns:1.1fr_1fr]"
         onMouseEnter={e => {
           const el = e.currentTarget as HTMLDivElement
           el.style.borderColor = "rgba(200,255,0,.25)"

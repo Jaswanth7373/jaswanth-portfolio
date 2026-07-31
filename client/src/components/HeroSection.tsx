@@ -278,100 +278,96 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* ── Bottom bar ── */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-          style={{
-            display: "flex", alignItems: "flex-end",
-            justifyContent: "space-between",
-            flexWrap: "wrap", gap: "1.5rem",
-            padding: "1.75rem 2.5rem 2.75rem",
-            borderTop: "1px solid rgba(200,255,0,.06)",
-            marginTop: "1.25rem",
-          }}
-        >
-          {/* Left: bio + CTAs */}
-          <div>
-            <motion.p
-              initial={{ opacity: 0, filter: "blur(12px)", y: 10 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{ delay: 1.2, duration: 0.9 }}
-              style={{
-                fontFamily: "'Cabinet Grotesk', sans-serif",
-                fontSize: "clamp(.85rem, 1.5vw, 1rem)",
-                color: "#444", lineHeight: 1.7,
-                maxWidth: "400px", margin: "0 0 1.1rem",
-              }}
-            >
-              Building intelligent systems and scalable web apps that solve real-world problems.
-            </motion.p>
+      {/* ── Bottom bar ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.8 }}
+        className="px-4 sm:px-10 py-6 sm:py-8 flex flex-col md:flex-row items-stretch md:items-end justify-between gap-6 border-t border-white/5 mt-5"
+      >
+        {/* Left: bio + CTAs */}
+        <div className="w-full md:w-auto">
+          <motion.p
+            initial={{ opacity: 0, filter: "blur(12px)", y: 10 }}
+            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+            transition={{ delay: 1.2, duration: 0.9 }}
+            style={{
+              fontFamily: "'Cabinet Grotesk', sans-serif",
+              fontSize: "clamp(.85rem, 1.5vw, 1rem)",
+              color: "#666", lineHeight: 1.7,
+              maxWidth: "400px", margin: "0 0 1.1rem",
+            }}
+          >
+            Building intelligent systems and scalable web apps that solve real-world problems.
+          </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 0.7 }}
-              style={{ display: "flex", gap: ".75rem", flexWrap: "wrap" }}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4, duration: 0.7 }}
+            className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
+          >
+            <span
+              ref={resumeMagnet.ref as React.RefObject<HTMLSpanElement>}
+              onMouseMove={resumeMagnet.onMove}
+              onMouseLeave={resumeMagnet.onLeave}
+              className="w-full sm:w-auto"
             >
-              <span
-                ref={resumeMagnet.ref as React.RefObject<HTMLSpanElement>}
-                onMouseMove={resumeMagnet.onMove}
-                onMouseLeave={resumeMagnet.onLeave}
-                style={{ display: "inline-block" }}
+              <motion.a
+                href={resumePdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="button-view-resume"
+                data-cursor="DOWNLOAD"
+                whileHover={{ y: -4, boxShadow: "0 16px 45px rgba(200,255,0,.35)" }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ type: "spring", stiffness: 320, damping: 18 }}
+                className="w-full sm:w-auto justify-center"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: ".45rem",
+                  padding: ".75rem 1.6rem",
+                  background: "#c8ff00", color: "#000",
+                  fontFamily: "'Instrument Mono', monospace",
+                  fontSize: ".7rem", letterSpacing: ".1em",
+                  textTransform: "uppercase", fontWeight: 700,
+                  textDecoration: "none",
+                  borderRadius: "4px",
+                }}
               >
-                <motion.a
-                  href={resumePdf}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="button-view-resume"
-                  data-cursor="DOWNLOAD"
-                  whileHover={{ y: -4, boxShadow: "0 16px 45px rgba(200,255,0,.35)" }}
-                  whileTap={{ scale: 0.96 }}
-                  transition={{ type: "spring", stiffness: 320, damping: 18 }}
-                  style={{
-                    display: "inline-flex", alignItems: "center", gap: ".45rem",
-                    padding: ".6rem 1.4rem",
-                    background: "#c8ff00", color: "#000",
-                    fontFamily: "'Instrument Mono', monospace",
-                    fontSize: ".68rem", letterSpacing: ".1em",
-                    textTransform: "uppercase", fontWeight: 700,
-                    textDecoration: "none",
-                  }}
-                >
-                  <Download size={12} />
-                  Resume
-                </motion.a>
-              </span>
-              <span
-                ref={projectsMagnet.ref as React.RefObject<HTMLSpanElement>}
-                onMouseMove={projectsMagnet.onMove}
-                onMouseLeave={projectsMagnet.onLeave}
-                style={{ display: "inline-block" }}
+                <Download size={13} />
+                Resume
+              </motion.a>
+            </span>
+            <span
+              ref={projectsMagnet.ref as React.RefObject<HTMLSpanElement>}
+              onMouseMove={projectsMagnet.onMove}
+              onMouseLeave={projectsMagnet.onLeave}
+              className="w-full sm:w-auto"
+            >
+              <motion.button
+                data-testid="button-explore-projects"
+                onClick={() => scrollTo("projects")}
+                data-cursor="VIEW WORK"
+                whileHover={{ y: -4, borderColor: "rgba(200,255,0,.4)", color: "#c8ff00" }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ type: "spring", stiffness: 320, damping: 18 }}
+                className="w-full sm:w-auto justify-center"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: ".45rem",
+                  padding: ".75rem 1.6rem",
+                  background: "transparent", color: "#888",
+                  fontFamily: "'Instrument Mono', monospace",
+                  fontSize: ".7rem", letterSpacing: ".1em",
+                  textTransform: "uppercase",
+                  border: "1px solid rgba(255,255,255,.15)",
+                  borderRadius: "4px",
+                }}
               >
-                <motion.button
-                  data-testid="button-explore-projects"
-                  onClick={() => scrollTo("projects")}
-                  data-cursor="VIEW WORK"
-                  whileHover={{ y: -4, borderColor: "rgba(200,255,0,.4)", color: "#c8ff00" }}
-                  whileTap={{ scale: 0.96 }}
-                  transition={{ type: "spring", stiffness: 320, damping: 18 }}
-                  style={{
-                    display: "inline-flex", alignItems: "center", gap: ".45rem",
-                    padding: ".6rem 1.4rem",
-                    background: "transparent", color: "#555",
-                    fontFamily: "'Instrument Mono', monospace",
-                    fontSize: ".68rem", letterSpacing: ".1em",
-                    textTransform: "uppercase",
-                    border: "1px solid #1c1c1c",
-                    cursor: "none",
-                  }}
-                >
-                  View Work ↗
-                </motion.button>
-              </span>
-            </motion.div>
-          </div>
+                View Work ↗
+              </motion.button>
+            </span>
+          </motion.div>
+        </div>
 
           {/* Right: animated stat counters */}
           <div className="grid grid-cols-2 gap-4 w-full sm:w-auto sm:flex sm:gap-10 sm:justify-end">
