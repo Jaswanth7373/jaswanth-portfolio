@@ -86,7 +86,7 @@ app.use((req, res, next) => {
 
   const port = Number(process.env.PORT) || 5000;
 
-  server.listen(port, "127.0.0.1", () => {
-    log(`🚀 Server running at http://127.0.0.1:${port}`);
+  server.listen(port, "0.0.0.0", () => {
+    log(`🚀 Server running on port ${port}`);
   });
 })();
