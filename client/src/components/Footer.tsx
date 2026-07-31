@@ -26,10 +26,19 @@ export function Footer() {
   const inView = useInView(ref, { once: true, margin: "-60px" })
 
   return (
-    <footer ref={ref} style={{ background: "rgba(3,3,3,.88)", borderTop: "1px solid rgba(200,255,0,.06)", overflow: "hidden" }}>
-
+    <footer
+      ref={ref}
+      style={{
+        position: "relative",
+        zIndex: 20,
+        pointerEvents: "auto",
+        background: "rgba(3,3,3,.95)",
+        borderTop: "1px solid rgba(200,255,0,.15)",
+        overflow: "hidden",
+      }}
+    >
       {/* ── Giant name as footer hero ── */}
-      <div style={{ overflow: "hidden", padding: "4rem 2rem 0", borderBottom: "1px solid rgba(200,255,0,.06)" }}>
+      <div style={{ overflow: "hidden", padding: "4rem 2rem 0", borderBottom: "1px solid rgba(200,255,0,.08)" }}>
         <motion.div
           initial={{ y: "100%" }}
           animate={inView ? { y: "0%" } : {}}
@@ -37,10 +46,10 @@ export function Footer() {
           style={{
             fontFamily: "'Cabinet Grotesk', sans-serif",
             fontWeight: 900,
-            fontSize: "clamp(3.5rem, 15vw, 18rem)",
+            fontSize: "clamp(3rem, 15vw, 18rem)",
             lineHeight: 0.88,
             letterSpacing: "-.04em",
-            WebkitTextStroke: "1px rgba(200,255,0,.2)",
+            WebkitTextStroke: "1px rgba(200,255,0,.35)",
             color: "transparent",
             userSelect: "none",
             paddingBottom: "1rem",
@@ -54,7 +63,7 @@ export function Footer() {
       <div style={{ maxWidth: "1140px", margin: "0 auto", padding: "3.5rem 2rem" }}>
         <div
           style={{ display: "grid", gap: "3rem" }}
-          className="[grid-template-columns:1fr] md:[grid-template-columns:1.5fr_1fr_1fr]"
+          className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr]"
         >
           {/* Brand */}
           <motion.div
@@ -66,16 +75,16 @@ export function Footer() {
               <span className="pulse-dot" style={{ width: "5px", height: "5px" }} />
               <span style={{
                 fontFamily: "'Instrument Mono', monospace",
-                fontSize: ".65rem", letterSpacing: ".2em",
-                textTransform: "uppercase", color: "rgba(200,255,0,.5)",
+                fontSize: ".7rem", letterSpacing: ".2em",
+                textTransform: "uppercase", color: "#c8ff00",
               }}>
                 B.Tech CSE · Bengaluru
               </span>
             </div>
-            <p style={{ color: "#333", fontSize: ".85rem", lineHeight: 1.8, marginBottom: "1.5rem", maxWidth: "260px" }}>
+            <p style={{ color: "#aaa", fontSize: ".88rem", lineHeight: 1.8, marginBottom: "1.5rem", maxWidth: "280px" }}>
               Building intelligent systems at the intersection of AI, Machine Learning, and Full-Stack Development.
             </p>
-            <div style={{ display: "flex", gap: ".65rem" }}>
+            <div style={{ display: "flex", gap: ".75rem" }}>
               {SOCIALS.map(({ icon: Icon, url, label }, i) => (
                 <motion.a
                   key={label}
@@ -88,16 +97,17 @@ export function Footer() {
                   transition={{ duration: 0.3, delay: 0.3 + i * 0.07, ease: [0.34, 1.56, 0.64, 1] }}
                   whileHover={{ scale: 1.15, y: -2 }}
                   style={{
-                    width: "32px", height: "32px",
-                    border: "1px solid #1a1a1a", borderRadius: "50%",
+                    width: "38px", height: "38px",
+                    border: "1px solid rgba(255,255,255,.15)", borderRadius: "50%",
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "#444", textDecoration: "none",
-                    transition: "border-color .2s, color .2s",
+                    color: "#eee", textDecoration: "none", cursor: "pointer",
+                    background: "rgba(255,255,255,.03)",
+                    transition: "border-color .2s, color .2s, background .2s",
                   }}
-                  onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "#c8ff00"; el.style.color = "#c8ff00" }}
-                  onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "#1a1a1a"; el.style.color = "#444" }}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "#c8ff00"; el.style.color = "#c8ff00"; el.style.background = "rgba(200,255,0,.08)" }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.borderColor = "rgba(255,255,255,.15)"; el.style.color = "#eee"; el.style.background = "rgba(255,255,255,.03)" }}
                 >
-                  <Icon size={13} />
+                  <Icon size={16} />
                 </motion.a>
               ))}
             </div>
@@ -111,27 +121,28 @@ export function Footer() {
           >
             <div style={{
               fontFamily: "'Instrument Mono', monospace",
-              fontSize: ".62rem", letterSpacing: ".18em",
-              textTransform: "uppercase", color: "rgba(200,255,0,.3)",
-              marginBottom: "1rem",
+              fontSize: ".7rem", letterSpacing: ".18em",
+              textTransform: "uppercase", color: "#c8ff00",
+              marginBottom: "1rem", fontWeight: 700,
             }}>
               Navigation
             </div>
-            <nav style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}>
+            <nav style={{ display: "flex", flexDirection: "column", gap: ".6rem" }}>
               {QUICK_LINKS.map(({ label, href }) => (
                 <button
                   key={href}
                   data-testid={`link-footer-${label.toLowerCase()}`}
                   onClick={() => scrollTo(href)}
                   style={{
-                    background: "none", border: "none", cursor: "none",
+                    background: "none", border: "none", cursor: "pointer",
                     fontFamily: "'Cabinet Grotesk', sans-serif",
-                    fontSize: ".85rem", color: "#333",
-                    textAlign: "left", padding: 0,
-                    transition: "color .2s",
+                    fontSize: ".95rem", color: "#ccc",
+                    textAlign: "left", padding: "2px 0",
+                    transition: "color .2s, transform .2s",
+                    display: "inline-block",
                   }}
-                  onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.color = "#c8ff00"}
-                  onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.color = "#333"}
+                  onMouseEnter={e => { const el = e.currentTarget as HTMLButtonElement; el.style.color = "#c8ff00"; el.style.transform = "translateX(4px)" }}
+                  onMouseLeave={e => { const el = e.currentTarget as HTMLButtonElement; el.style.color = "#ccc"; el.style.transform = "none" }}
                 >
                   {label}
                 </button>
@@ -147,27 +158,27 @@ export function Footer() {
           >
             <div style={{
               fontFamily: "'Instrument Mono', monospace",
-              fontSize: ".62rem", letterSpacing: ".18em",
-              textTransform: "uppercase", color: "rgba(200,255,0,.3)",
-              marginBottom: "1rem",
+              fontSize: ".7rem", letterSpacing: ".18em",
+              textTransform: "uppercase", color: "#c8ff00",
+              marginBottom: "1rem", fontWeight: 700,
             }}>
               Get In Touch
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: ".5rem" }}>
-              <p style={{ color: "#333", fontSize: ".85rem", lineHeight: 1.6, margin: 0 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: ".6rem" }}>
+              <p style={{ color: "#aaa", fontSize: ".88rem", lineHeight: 1.6, margin: 0 }}>
                 Open to internships in AI/ML & Full-Stack
               </p>
               <a
                 href="mailto:jaswanthsimha533@gmail.com"
                 data-testid="link-footer-email"
                 style={{
-                  color: "rgba(200,255,0,.6)", fontSize: ".82rem",
-                  textDecoration: "none",
+                  color: "#c8ff00", fontSize: ".88rem",
+                  textDecoration: "underline", textUnderlineOffset: "4px",
                   fontFamily: "'Instrument Mono', monospace",
-                  transition: "color .2s",
+                  transition: "opacity .2s", cursor: "pointer",
                 }}
-                onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = "#c8ff00"}
-                onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = "rgba(200,255,0,.6)"}
+                onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.opacity = "0.8"}
+                onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.opacity = "1"}
               >
                 jaswanthsimha533@gmail.com
               </a>
@@ -176,21 +187,21 @@ export function Footer() {
             <motion.button
               data-testid="button-back-to-top"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              whileHover={{ y: -2 }}
+              whileHover={{ y: -3 }}
               style={{
-                marginTop: "1.5rem",
-                display: "inline-flex", alignItems: "center", gap: ".4rem",
-                background: "none", border: "1px solid #1a1a1a",
-                borderRadius: "4px", padding: ".45rem .9rem", cursor: "none",
+                marginTop: "1.75rem",
+                display: "inline-flex", alignItems: "center", gap: ".5rem",
+                background: "rgba(200,255,0,.06)", border: "1px solid rgba(200,255,0,.3)",
+                borderRadius: "6px", padding: ".6rem 1.1rem", cursor: "pointer",
                 fontFamily: "'Instrument Mono', monospace",
-                fontSize: ".65rem", letterSpacing: ".08em",
-                textTransform: "uppercase", color: "#333",
-                transition: "border-color .2s, color .2s",
+                fontSize: ".7rem", letterSpacing: ".1em",
+                textTransform: "uppercase", color: "#c8ff00", fontWeight: 700,
+                transition: "border-color .2s, background .2s",
               }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "rgba(200,255,0,.3)"; el.style.color = "#c8ff00" }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "#1a1a1a"; el.style.color = "#333" }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "#c8ff00"; el.style.background = "rgba(200,255,0,.15)" }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "rgba(200,255,0,.3)"; el.style.background = "rgba(200,255,0,.06)" }}
             >
-              <ArrowUp size={12} />
+              <ArrowUp size={14} />
               Back to top
             </motion.button>
           </motion.div>
@@ -203,17 +214,17 @@ export function Footer() {
           transition={{ duration: 0.6, delay: 0.5 }}
           style={{
             paddingTop: "2rem",
-            borderTop: "1px solid rgba(200,255,0,.04)",
+            borderTop: "1px solid rgba(255,255,255,.08)",
             marginTop: "2.5rem",
             display: "flex", alignItems: "center",
             justifyContent: "space-between",
             flexWrap: "wrap", gap: ".75rem",
           }}
         >
-          <p style={{ fontFamily: "'Instrument Mono', monospace", fontSize: ".62rem", color: "#222", letterSpacing: ".04em", margin: 0 }}>
+          <p style={{ fontFamily: "'Instrument Mono', monospace", fontSize: ".68rem", color: "#888", letterSpacing: ".04em", margin: 0 }}>
             © 2026 M N Jaswanth. All rights reserved.
           </p>
-          <p style={{ fontFamily: "'Instrument Mono', monospace", fontSize: ".62rem", color: "#222", letterSpacing: ".04em", margin: 0 }}>
+          <p style={{ fontFamily: "'Instrument Mono', monospace", fontSize: ".68rem", color: "#888", letterSpacing: ".04em", margin: 0 }}>
             React · TypeScript · Framer Motion
           </p>
         </motion.div>
