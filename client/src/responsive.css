@@ -58,6 +58,19 @@ p, h1, h2, h3, h4, li, span, a {
 /* ── Contact form card ──────────────────────────────────────────── */
 .contact-form-card { padding: 2.5rem; }
 
+/* ── Timeline row hover nudge ───────────────────────────────────────
+   Previously animated padding-left on the row, which forces a layout
+   pass every frame. Shifting the row's children by transform gets the
+   same read on the compositor, and leaves the row border in place. */
+.timeline-row > * {
+  transition: transform .4s cubic-bezier(.34, 1.56, .64, 1);
+}
+@media (hover: hover) {
+  .timeline-row:hover > * {
+    transform: translateX(.75rem);
+  }
+}
+
 /* ── Footer ─────────────────────────────────────────────────────── */
 .footer-hero { padding: 4rem 2rem 0; }
 .footer-info { padding: 3.5rem 2rem; }

@@ -314,11 +314,8 @@ export function AboutSection() {
                 style={{
                   alignItems: "start",
                   borderBottom: "1px solid rgba(200,255,0,.05)",
-                  transition: "padding-left .4s cubic-bezier(.34,1.56,.64,1)",
                 }}
-                className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-2 sm:gap-8 py-7 sm:py-10"
-                onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.paddingLeft = ".75rem"}
-                onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.paddingLeft = "0"}
+                className="timeline-row grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-2 sm:gap-8 py-7 sm:py-10"
               >
                 <div style={{
                   fontFamily: "'Instrument Mono',monospace",
