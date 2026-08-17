@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { Github, Instagram, Linkedin, Download, ArrowDown } from "lucide-react"
 import { useMagnet } from "@/hooks/useMagnet"
 import { scrollToElement } from "@/hooks/useSmoothScroll"
-import resumePdf from "@assets/Jaswanth_Resume_new2.pdf"
+import resumePdf from "@assets/Jaswanth_Resume_2027.pdf"
 
 function scrollTo(id: string) {
   scrollToElement(`#${id}`)

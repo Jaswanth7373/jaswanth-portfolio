@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react"
 import { Download, Github, Linkedin, Instagram, Mail } from "lucide-react"
-import resumePdf from "@assets/Jaswanth_Resume_new2.pdf"
+import resumePdf from "@assets/Jaswanth_Resume_2027.pdf"
 
 const HIGHLIGHTS = [
   { icon: "01", label: "Education",    value: "B.Tech CSE",             sub: "M S Ramaiah University · 88.1%" },
