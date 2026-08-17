@@ -312,14 +312,11 @@ export function AboutSection() {
                 animate={tlInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.7, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
                 style={{
-                  display: "grid",
-                  gridTemplateColumns: "180px 1fr",
-                  gap: "2rem", alignItems: "start",
-                  padding: "2.5rem 0",
+                  alignItems: "start",
                   borderBottom: "1px solid rgba(200,255,0,.05)",
                   transition: "padding-left .4s cubic-bezier(.34,1.56,.64,1)",
                 }}
-                className="[grid-template-columns:1fr] sm:[grid-template-columns:180px_1fr]"
+                className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-2 sm:gap-8 py-7 sm:py-10"
                 onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.paddingLeft = ".75rem"}
                 onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.paddingLeft = "0"}
               >
@@ -384,7 +381,7 @@ export function AboutSection() {
           </p>
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(240px,1fr))",
+            gridTemplateColumns: "repeat(auto-fill,minmax(min(240px,100%),1fr))",
             gap: "1rem",
           }}>
             {CERTS.map((cert, i) => (

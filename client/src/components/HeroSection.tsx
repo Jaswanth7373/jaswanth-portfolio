@@ -126,8 +126,8 @@ export function HeroSection() {
     <motion.section
       id="hero"
       ref={sectionRef}
+      className="hero-shell"
       style={{
-        height: "100vh", minHeight: "700px",
         position: "relative", overflow: "hidden",
         background: "rgba(3,3,3,.5)",
         display: "flex", flexDirection: "column", justifyContent: "flex-end",

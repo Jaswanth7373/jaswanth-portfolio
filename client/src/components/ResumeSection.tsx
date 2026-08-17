@@ -36,7 +36,7 @@ export function ResumeSection() {
 
   return (
     <section id="resume" ref={sectionRef} style={{ background: "rgba(5,5,5,.86)", borderTop: "none" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "7rem 2.5rem 9rem" }}>
+      <div className="section-shell" style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
         {/* ── Section divider + number ── */}
         <div
@@ -75,11 +75,8 @@ export function ResumeSection() {
         {/* Highlights */}
         <div
           data-reveal
-          style={{
-            display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "1rem",
-            marginBottom: "4rem", transitionDelay: ".1s",
-          }}
-          className="[grid-template-columns:1fr_1fr] lg:[grid-template-columns:repeat(4,1fr)]"
+          style={{ marginBottom: "4rem", transitionDelay: ".1s" }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4"
         >
           {HIGHLIGHTS.map(h => (
             <div

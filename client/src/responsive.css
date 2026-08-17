@@ -1,0 +1,251 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESPONSIVE LAYER
+   ────────────────────────────────────────────────────────────────
+   Most of this site is styled with inline style={{}} objects. Inline
+   styles beat both media queries and Tailwind classes, so the desktop
+   values used to "stick" on phones and squash the layout.
+
+   The fix: the layout-critical values (section padding, card padding,
+   viewport height) were lifted out of those inline objects into the
+   classes below, where media queries can actually reach them.
+
+   Breakpoints: <=640px phones, <=900px small tablets.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── Global overflow guards ─────────────────────────────────────── */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, svg, video, canvas {
+  max-width: 100%;
+}
+
+/* Long unbroken strings (emails, URLs) must not force a wide page */
+p, h1, h2, h3, h4, li, span, a {
+  overflow-wrap: break-word;
+}
+
+/* ── Section shell (About / Projects / Blog / Resume) ───────────── */
+.section-shell {
+  padding: 7rem 2.5rem 9rem;
+}
+.section-shell--flush {
+  padding-bottom: 0;
+}
+
+/* ── Hero ───────────────────────────────────────────────────────── */
+.hero-shell {
+  height: 100vh;
+  min-height: 700px;
+}
+/* dvh excludes the mobile URL bar, so the hero never overshoots */
+@supports (height: 100dvh) {
+  .hero-shell { height: 100dvh; }
+}
+
+/* ── Contact form card ──────────────────────────────────────────── */
+.contact-form-shell {
+  margin: 0 2.5rem 7rem;
+  padding: 2.5rem;
+}
+
+/* ── Project modal + featured card body ─────────────────────────── */
+.proj-modal-box { padding: 2.5rem; }
+.feat-card-body { padding: 2.5rem; }
+
+/* ── Contact form card ──────────────────────────────────────────── */
+.contact-form-card { padding: 2.5rem; }
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+.footer-hero { padding: 4rem 2rem 0; }
+.footer-info { padding: 3.5rem 2rem; }
+
+/* ━━━━━━━━━━━━━━ TABLET (<= 900px) ━━━━━━━━━━━━━━ */
+@media (max-width: 900px) {
+  .section-shell {
+    padding: 5.5rem 1.75rem 6.5rem;
+  }
+  .section-shell--flush { padding-bottom: 0; }
+
+  .contact-form-shell {
+    margin: 0 1.75rem 5.5rem;
+    padding: 2rem;
+  }
+
+  .feat-card-body { padding: 2rem; }
+  .footer-hero    { padding: 3rem 1.75rem 0; }
+  .footer-info    { padding: 3rem 1.75rem; }
+}
+
+/* ━━━━━━━━━━━━━━ PHONE (<= 640px) ━━━━━━━━━━━━━━ */
+@media (max-width: 640px) {
+  .section-shell {
+    padding: 4rem 1.15rem 4.5rem;
+  }
+  .section-shell--flush { padding-bottom: 0; }
+
+  .contact-form-shell {
+    margin: 0 1.15rem 4rem;
+    padding: 1.35rem;
+  }
+
+  .proj-modal-box { padding: 1.5rem; }
+  .feat-card-body { padding: 1.5rem; }
+
+  /* ContactSection already wraps this in a bordered card — on phones the
+     nested frame doubles the side padding and squeezes the inputs. Flatten
+     the inner card so only the outer frame remains. */
+  .contact-form-card {
+    padding: 0;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0;
+  }
+
+  .footer-hero { padding: 2.25rem 1.15rem 0; }
+  .footer-info { padding: 2.5rem 1.15rem; }
+
+  /* Hero can grow past the viewport on short phones rather than clipping */
+  .hero-shell {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 5.5rem;
+  }
+  @supports (height: 100dvh) {
+    .hero-shell { min-height: 100dvh; }
+  }
+
+  /* The giant outlined footer wordmark overflows badly at 15vw */
+  .footer-hero > div {
+    font-size: clamp(2rem, 11vw, 4rem) !important;
+  }
+
+  /* Section number / tag rows: let the two labels stack instead of colliding */
+  .section-meta {
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Buttons: 2.2rem side padding overflows narrow screens */
+  .btn-lime,
+  .btn-ghost {
+    padding: .8rem 1.35rem;
+    font-size: .78rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Marquee breathing room */
+  .marquee-item {
+    padding: 0 1.25rem;
+    font-size: .68rem;
+  }
+
+  /* Toast must not hang off-screen */
+  .lime-toast {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: none;
+  }
+
+  /* shadcn modal fallback */
+  .modal-box {
+    padding: 1.5rem;
+    max-height: 88vh;
+  }
+
+  /* Skill chips / project tags: smaller so rows wrap less */
+  .skill-chip { font-size: .7rem; padding: .3rem .6rem; }
+  .proj-tag   { font-size: .62rem; }
+
+  /* Cert + blog cards */
+  .cert-card-wrap { padding: 1rem; }
+  .blog-card-wrap { padding: 1.25rem; }
+
+  /* Inputs at <16px trigger iOS auto-zoom on focus */
+  .contact-input,
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    font-size: 16px;
+  }
+
+}
+
+/* ━━━━━━━━━━━━━━ TOUCH DEVICES ━━━━━━━━━━━━━━ */
+@media (hover: none) {
+  /* Hover-only lift effects stick on tap without a pointer to leave */
+  .btn-lime:hover,
+  .btn-ghost:hover,
+  .skill-chip:hover,
+  .blog-card-wrap:hover,
+  .cert-card-wrap:hover {
+    transform: none;
+  }
+
+  /* The rotating conic border animates forever off-screen on mobile */
+  .gs-wrapper::before {
+    animation: none;
+  }
+
+  /* ── Tap targets ──────────────────────────────────────────────
+     Keyed off input method, not viewport width — a 768px tablet is
+     still touch-driven. Several of these carry inline padding from
+     the component, hence the !important. */
+
+  /* Menu toggle is the primary mobile control — 26px was too small */
+  [data-testid="button-mobile-menu"] {
+    padding: 11px !important;
+    margin: -11px -8px -11px 0;
+  }
+
+  [data-testid="link-logo"] {
+    padding: 9px 6px 9px 0 !important;
+    margin: -9px 0;
+  }
+
+  /* Desktop nav links still render on touch tablets */
+  [data-testid^="link-nav-"] {
+    padding: .6rem 0 .9rem !important;
+  }
+
+  /* "Details" / inline card actions */
+  .feat-card-body button {
+    padding: .6rem .25rem;
+    margin: -.6rem -.25rem;
+  }
+
+  /* The ↗ github glyph on grid cards */
+  [data-testid^="link-github-"] {
+    padding: .5rem;
+    margin: -.5rem;
+  }
+
+  /* Blog search + tag filters */
+  [data-testid="input-blog-search"] { padding: .5rem 0 !important; }
+  [data-testid^="badge-filter-"] {
+    padding-top: .5rem !important;
+    padding-bottom: .5rem !important;
+  }
+
+  /* Footer link columns */
+  [data-testid^="link-footer-"] {
+    padding: .55rem 0 !important;
+    display: inline-block;
+  }
+
+  /* Hero scroll cue */
+  #hero > button {
+    padding: .85rem 1.25rem !important;
+  }
+
+  /* Hero's right-edge vertical socials are bare 15px icons */
+  [data-testid^="link-social-"] {
+    padding: .75rem;
+    margin: -.75rem;
+  }
+}

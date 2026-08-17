@@ -118,7 +118,7 @@ export function BlogSection() {
 
   return (
     <section id="blog" ref={sectionRef} style={{ background: "rgba(8,8,8,.86)", borderTop: "none", borderBottom: "none" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "7rem 2.5rem 9rem" }}>
+      <div className="section-shell" style={{ maxWidth: "1200px", margin: "0 auto" }}>
 
         {/* ── Section divider + number ── */}
         <div
@@ -158,7 +158,7 @@ export function BlogSection() {
                 style={{
                   background: "none", border: "none", outline: "none",
                   color: "var(--text)", fontFamily: "'Cabinet Grotesk',sans-serif",
-                  fontSize: ".88rem", width: "180px",
+                  fontSize: ".88rem", width: "100%", minWidth: 0, maxWidth: "180px",
                 }}
               />
             </div>

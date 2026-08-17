@@ -121,13 +121,14 @@ function CinematicModal({ project, onClose }: { project: typeof PROJECTS[0]; onC
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.94, opacity: 0, y: 20 }}
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        className="proj-modal-box"
         style={{
           background: "#080808",
           border: "1px solid rgba(200,255,0,.18)",
           borderRadius: "16px",
           maxWidth: "680px", width: "100%",
           maxHeight: "85vh", overflowY: "auto",
-          padding: "2.5rem", position: "relative",
+          position: "relative",
         }}
       >
         <button
@@ -250,7 +251,7 @@ function FeaturedCard({ project, index, onClick }: { project: typeof PROJECTS[0]
         </div>
 
         {/* Content */}
-        <div style={{ padding: "2.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+        <div className="feat-card-body" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
           <div>
             <div style={{ fontFamily: "'Instrument Mono',monospace", fontSize: ".62rem", color: "#c8ff00", letterSpacing: ".15em", textTransform: "uppercase", marginBottom: ".75rem" }}>
               {project.num} — Featured
@@ -378,7 +379,7 @@ export function ProjectsSection() {
     <section id="projects" ref={sectionRef} style={{ background: "rgba(3,3,3,.86)", overflow: "hidden" }}>
 
       {/* ── Section divider + number ── */}
-      <div style={{ padding: "7rem 2.5rem 0" }}>
+      <div className="section-shell section-shell--flush">
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}

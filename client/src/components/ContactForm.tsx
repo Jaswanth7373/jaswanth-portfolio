@@ -94,9 +94,9 @@ export function ContactForm() {
   }
 
   return (
-    <div className="tilt-card" style={{
+    <div className="tilt-card contact-form-card" style={{
       background: "var(--bg3)", border: "1px solid var(--lime-border)",
-      borderRadius: "12px", padding: "2.5rem",
+      borderRadius: "12px",
     }}>
       <div style={{ fontFamily: "'Instrument Mono',monospace", fontSize: ".7rem", color: "var(--lime)", letterSpacing: ".15em", textTransform: "uppercase", marginBottom: ".5rem" }}>
         Send a Message
@@ -106,8 +106,7 @@ export function ContactForm() {
       </h3>
 
       <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}
-          className="[grid-template-columns:1fr] sm:[grid-template-columns:1fr_1fr]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="contact-label">Name *</label>
             <input

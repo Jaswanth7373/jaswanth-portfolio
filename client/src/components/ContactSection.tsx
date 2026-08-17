@@ -180,13 +180,12 @@ export function ContactSection() {
         initial={{ opacity: 0, y: 40 }}
         animate={formInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="contact-form-shell"
         style={{
-          margin: "0 2.5rem 7rem",
           maxWidth: "640px",
           background: "rgba(8,8,8,.95)",
           border: "1px solid rgba(200,255,0,.08)",
           borderRadius: "12px",
-          padding: "2.5rem",
         }}
       >
         <div style={{

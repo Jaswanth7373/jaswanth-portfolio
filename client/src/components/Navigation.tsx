@@ -161,7 +161,7 @@ export function Navigation() {
               position: "absolute", top: "100%", left: 0, right: 0,
               background: "rgba(3,3,3,.97)",
               borderBottom: "1px solid rgba(200,255,0,.06)",
-              padding: "1.5rem 2.5rem",
+              padding: "1.25rem 1rem",
               display: "flex", flexDirection: "column", gap: ".9rem",
               overflow: "hidden",
             }}

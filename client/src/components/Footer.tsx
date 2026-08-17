@@ -38,7 +38,7 @@ export function Footer() {
       }}
     >
       {/* ── Giant name as footer hero ── */}
-      <div style={{ overflow: "hidden", padding: "4rem 2rem 0", borderBottom: "1px solid rgba(200,255,0,.08)" }}>
+      <div className="footer-hero" style={{ overflow: "hidden", borderBottom: "1px solid rgba(200,255,0,.08)" }}>
         <motion.div
           initial={{ y: "100%" }}
           animate={inView ? { y: "0%" } : {}}
@@ -60,7 +60,7 @@ export function Footer() {
       </div>
 
       {/* ── Footer info row ── */}
-      <div style={{ maxWidth: "1140px", margin: "0 auto", padding: "3.5rem 2rem" }}>
+      <div className="footer-info" style={{ maxWidth: "1140px", margin: "0 auto" }}>
         <div
           style={{ display: "grid", gap: "3rem" }}
           className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr]"
